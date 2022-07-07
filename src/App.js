@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import ExpenseList from './components/Expenses/ExpensesList/ExpenseList';
+import NewExpense from './components/Expenses/NewExpense/NewExpense';
 
 function App() {
 
@@ -28,8 +29,8 @@ function App() {
 
     return (
         <div className="App">
-            <h2>Let's get started!</h2>
-            <ExpenseList expenses={expenses}></ExpenseList>
+            <NewExpense/>
+            <ExpenseList expenses={expenses}/>
         </div>
     );
 }
