@@ -1,3 +1,5 @@
+import {useState} from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import ExpenseList from './components/Expenses/ExpensesList/ExpenseList';
@@ -5,7 +7,7 @@ import NewExpense from './components/Expenses/NewExpense/NewExpense';
 
 function App() {
 
-    const expenses = [
+    const expensesList = [
         {
             id: 'e1',
             title: 'Toilet Paper',
@@ -27,10 +29,18 @@ function App() {
         },
     ];
 
+    const [expenses, setExpenses] = useState({
+        expensesList: [...expensesList]
+    })
+
+    function addExpenseHandler(expense) {
+        setExpenses(prevState => ({...prevState, expensesList: [...expenses.expensesList, expense]}))
+    }
+
     return (
         <div className="App">
-            <NewExpense/>
-            <ExpenseList expenses={expenses}/>
+            <NewExpense onAddExpense={addExpenseHandler}/>
+            <ExpenseList expenses={expenses.expensesList}/>
         </div>
     );
 }
