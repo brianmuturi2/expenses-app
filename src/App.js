@@ -34,13 +34,19 @@ function App() {
     })
 
     function addExpenseHandler(expense) {
-        setExpenses(prevState => ({...prevState, expensesList: [...expenses.expensesList, expense]}))
+        expensesList.push(expense)
+        setExpenses(prevState => ({...prevState, expensesList}))
+    }
+
+    function filterExpenses(date) {
+        const newExpenses = expensesList.filter(expense => ((new Date(expense.date).getFullYear()) == new Date(date).getFullYear()))
+        setExpenses(prevState => ({...prevState, expensesList: newExpenses}))
     }
 
     return (
         <div className="App">
             <NewExpense onAddExpense={addExpenseHandler}/>
-            <ExpenseList expenses={expenses.expensesList}/>
+            <ExpenseList expenses={expenses.expensesList} onFilterChange={filterExpenses}/>
         </div>
     );
 }
