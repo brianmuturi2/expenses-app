@@ -1,9 +1,7 @@
 import {useState} from 'react';
-
-import logo from './logo.svg';
 import './App.css';
-import ExpenseList from './components/Expenses/ExpensesList/ExpenseList';
 import NewExpense from './components/Expenses/NewExpense/NewExpense';
+import Expenses from './components/Expenses/Expenses/Expenses';
 
 function App() {
 
@@ -38,15 +36,10 @@ function App() {
         setExpenses(prevState => ({...prevState, expensesList}))
     }
 
-    function filterExpenses(date) {
-        const newExpenses = expensesList.filter(expense => ((new Date(expense.date).getFullYear()) == new Date(date).getFullYear()))
-        setExpenses(prevState => ({...prevState, expensesList: newExpenses}))
-    }
-
     return (
         <div className="App">
             <NewExpense onAddExpense={addExpenseHandler}/>
-            <ExpenseList expenses={expenses.expensesList} onFilterChange={filterExpenses}/>
+            <Expenses expenses={expenses.expensesList}/>
         </div>
     );
 }
