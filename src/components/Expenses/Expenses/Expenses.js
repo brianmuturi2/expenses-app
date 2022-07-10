@@ -13,6 +13,10 @@ function Expenses(props) {
         expenses: props.expenses
     });
 
+    if (state.expenses.length !== props.expenses.length) {
+        setState(prevState => ({...prevState, expenses: props.expenses}))
+    }
+
     function filterChangeHandler(selectedYear) {
         setState(prevState => ({...prevState, filteredYear: selectedYear}));
         filterExpenses(selectedYear);

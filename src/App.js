@@ -32,8 +32,7 @@ function App() {
     })
 
     function addExpenseHandler(expense) {
-        expensesList.push(expense)
-        setExpenses(prevState => ({...prevState, expensesList}))
+        setExpenses(prevState => ({...prevState, expensesList: [...expensesList, expense]}))
     }
 
     return (
