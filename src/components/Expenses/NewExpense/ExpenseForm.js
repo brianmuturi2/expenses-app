@@ -33,7 +33,8 @@ function ExpenseForm(props) {
         cancelAddExpenseHandler();
     }
 
-    function cancelAddExpenseHandler() {
+    function cancelAddExpenseHandler(event) {
+        event.preventDefault();
         setAddExpenseState(prevState => ({...prevState, addExpense: false}));
     }
 
